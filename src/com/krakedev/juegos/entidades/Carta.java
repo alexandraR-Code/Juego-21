@@ -2,9 +2,9 @@ package com.krakedev.juegos.entidades;
 
 public class Carta {
 	// Atributos
-	private String valor;
+	private String valor; // "A", "2"… "10", "J", "Q", "K";
 	private int valorJuego;
-	private String palo;
+	private String palo; // "D" Diamante, "T" Trébol, "CN" Corazón Negro, "CR" Corazón Rojo.
 
 	// getter y setter
 
