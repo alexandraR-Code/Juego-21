@@ -34,9 +34,7 @@ public class Carta {
 
 	// Metodo imprimir
 	public void imprimir() {
-		System.out.println("Valor: " + getValor());
-		System.out.println("Valor juego: " + getValorJuego());
-		System.out.println("Palo: " + getPalo());
+		System.out.println(getValor() + " - " + getPalo() + " , " + " Valor juego: " + getValorJuego());
 	}
 
 }
