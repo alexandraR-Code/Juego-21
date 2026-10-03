@@ -59,4 +59,11 @@ public class Juego21 {
 
 	}
 
+	// Toma la carta del dealer y se la da al jugador
+	public void repartirCarta(Jugador jugador) {
+		Carta carta = dealer.entregarCarta();
+		jugador.recibirCarta(carta);
+
+	}
+
 }
