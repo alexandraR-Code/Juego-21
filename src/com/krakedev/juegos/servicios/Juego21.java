@@ -52,4 +52,11 @@ public class Juego21 {
 		cargarValores();
 
 	}
+
+	// Agrega a la lista jugadores el jugador que llega a la mesa
+	public void agregarJugador(Jugador jugador) {
+		jugadores.add(jugador);
+
+	}
+
 }
