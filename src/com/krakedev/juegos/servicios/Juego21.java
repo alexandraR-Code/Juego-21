@@ -42,4 +42,11 @@ public class Juego21 {
 		}
 
 	}
+
+	// Metodo inicializar
+	public void inicializar() {
+		dealer = new Dealer();
+		cargarValores();
+
+	}
 }
