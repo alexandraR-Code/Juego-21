@@ -7,8 +7,9 @@ import com.krakedev.juegos.entidades.Jugador;
 
 public class Juego21 {
 	// Atributos
-	private ArrayList<Jugador> jugadores = new ArrayList<>();
-	private Dealer dealer;
+	private ArrayList<Jugador> jugadores = new ArrayList<>(); // Jugadores de la mesa; se crea aquí porque se agregan
+																// antes de inicializar
+	private Dealer dealer; // Se crea en inicializar()
 
 	// Metodos setter y getter
 	public ArrayList<Jugador> getJugadores() {
@@ -27,7 +28,8 @@ public class Juego21 {
 		this.dealer = dealer;
 	}
 
-	// Metodo cargarValores
+	// Asigna el valorJuego de cada carta: A = 11, J/Q/K = 10,
+	// números = su valor
 	public void cargarValores() {
 		for (Carta carta : dealer.getNaipe()) {
 			if (carta.getValor().equals("A")) {
@@ -35,6 +37,7 @@ public class Juego21 {
 			} else if (carta.getValor().equals("J") || carta.getValor().equals("Q") || carta.getValor().equals("K")) {
 				carta.setValorJuego(10);
 			} else {
+				// Convierte el texto ("7") en número (7)
 				carta.setValorJuego(Integer.parseInt(carta.getValor()));
 
 			}
@@ -43,7 +46,7 @@ public class Juego21 {
 
 	}
 
-	// Metodo inicializar
+	// Prepara la mesa: crea el dealer y carga los valores. El orden importa
 	public void inicializar() {
 		dealer = new Dealer();
 		cargarValores();

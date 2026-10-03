@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class Jugador {
 	// Atributos
-	private String nickname;
-	private ArrayList<Carta> cartas = new ArrayList<>();
+	private String nickname; // Apodo con el que se identifica el jugador
+	private ArrayList<Carta> cartas = new ArrayList<>(); // Cartas recibidas; se inicializa aquí para evitar
+															// NullPointerException
 
 	// Metodos getter y setter
 
@@ -25,7 +26,7 @@ public class Jugador {
 		this.cartas = cartas;
 	}
 
-	// Metodo recibirCarta
+	// Agrega a la lista del jugador la carta que le entrega el dealer
 	public void recibirCarta(Carta carta) {
 		cartas.add(carta);
 

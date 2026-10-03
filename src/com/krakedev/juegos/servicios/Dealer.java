@@ -9,7 +9,7 @@ public class Dealer {
 	// Mazo del dealer: lista con las 52 cartas
 	private ArrayList<Carta> naipe;
 
-	// Constructor
+	// Crea la lista vacía y genera las 52 cartas (en ese orden)
 	public Dealer() {
 		naipe = new ArrayList<Carta>();
 		generarNaipe();
@@ -75,13 +75,15 @@ public class Dealer {
 
 	}
 
-	// Metodo generarAleatorio
+	// Retorna un entero entre 0 y maximo,
+	// ambos incluidos: se multiplica por maximo + 1
 	public int generarAleatorio(int maximo) {
 		int aleatorio = (int) (Math.random() * (maximo + 1));
 		return aleatorio;
 	}
 
-	// Metodo entregarCarta
+	// Saca una carta al azar del naipe:
+	// la toma, la elimina y la retorna
 	public Carta entregarCarta() {
 		int posicion = generarAleatorio(naipe.size() - 1);
 		Carta carta = naipe.get(posicion);
