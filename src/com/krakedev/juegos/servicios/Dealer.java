@@ -74,4 +74,10 @@ public class Dealer {
 		}
 
 	}
+
+	// Metodo generarAleatorio
+	public int generarAleatorio(int maximo) {
+		int aleatorio = (int) (Math.random() * (maximo + 1));
+		return aleatorio;
+	}
 }
