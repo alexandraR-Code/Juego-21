@@ -32,4 +32,21 @@ public class Jugador {
 
 	}
 
+// for-each: recorre la lista de principio a fin, una vuelta por cada elemento
+//  for      → palabra reservada que inicia un ciclo
+//  ( )      → encierran cómo funciona el ciclo
+//  Carta    → TIPO de cada elemento de la lista
+//  carta    → NOMBRE de la variable que guarda UNA carta en cada vuelta
+//  :        → se lee "de" / "en": "para cada carta DE la lista"
+//  cartas   → la LISTA que se recorre
+//  { }      → el bloque que se repite en cada vuelta
+
+	public void imprimir() {
+		System.out.println("Jugador: " + getNickname());
+		for (Carta carta : cartas) {
+			carta.imprimir();
+		}
+
+	}
+
 }
