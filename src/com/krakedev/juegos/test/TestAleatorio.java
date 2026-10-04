@@ -2,6 +2,8 @@ package com.krakedev.juegos.test;
 
 import com.krakedev.juegos.servicios.Dealer;
 
+//Prueba de Dealer.generarAleatorio(5) con 100 llamadas: comprueba que el resultado siempre
+//está entre 0 y 5, y que en algún momento salieron el 0 y el máximo.
 public class TestAleatorio {
 
 	public static void main(String[] args) {

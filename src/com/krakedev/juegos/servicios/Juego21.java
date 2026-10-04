@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import com.krakedev.juegos.entidades.Carta;
 import com.krakedev.juegos.entidades.Jugador;
 
+//El organizador de la mesa: coordina al Dealer y a los Jugadores.
+//No guarda cartas por sí mismo: usa Dealer (el mazo) y Jugador (las manos).
+//Orden de uso: agregarJugador (varios) -> inicializar -> repartirRonda.
 public class Juego21 {
 	// Atributos
 	private ArrayList<Jugador> jugadores = new ArrayList<>(); // Jugadores de la mesa; se crea aquí porque se agregan
@@ -28,8 +31,10 @@ public class Juego21 {
 		this.dealer = dealer;
 	}
 
-	// Asigna el valorJuego de cada carta: A = 11, J/Q/K = 10,
-	// números = su valor
+	// Asigna el valorJuego de cada Carta del naipe del dealer: A = 11, J/Q/K = 10 y
+	// números = su valor.
+	// Recorre dealer.getNaipe() y usa los métodos de Carta (getValor y
+	// setValorJuego).
 	public void cargarValores() {
 		for (Carta carta : dealer.getNaipe()) {
 			if (carta.getValor().equals("A")) {
@@ -46,27 +51,37 @@ public class Juego21 {
 
 	}
 
-	// Prepara la mesa: crea el dealer y carga los valores. El orden importa
+	// Prepara la mesa: crea el Dealer (que genera el naipe de 52 cartas) y luego
+	// asigna los puntos
+	// con cargarValores(). El orden importa: cargarValores necesita que el dealer
+	// ya exista.
 	public void inicializar() {
 		dealer = new Dealer();
 		cargarValores();
 
 	}
 
-	// Agrega a la lista jugadores el jugador que llega a la mesa
+	// Inscribe a un jugador en la mesa: lo guarda en la lista jugadores.
+	// Se puede usar antes de inicializar() porque la lista jugadores ya existe
+	// desde el inicio.
 	public void agregarJugador(Jugador jugador) {
 		jugadores.add(jugador);
 
 	}
 
-	// Toma una carta del dealer y se la entrega al jugador
+	// Reparte UNA carta a UN jugador: la pide al dealer (Dealer.entregarCarta) y se
+	// la entrega
+	// al jugador (Jugador.recibirCarta). Así la carta pasa del naipe a la mano del
+	// jugador.
 	public void repartirCarta(Jugador jugador) {
 		Carta carta = dealer.entregarCarta();
 		jugador.recibirCarta(carta);
 
 	}
 
-	// Entrega una carta a cada jugador de la mesa
+	// Reparte una ronda: recorre la lista jugadores y llama a repartirCarta por
+	// cada uno,
+	// de modo que todos reciben una carta.
 	public void repartirRonda() {
 		for (Jugador jugador : jugadores) {
 			repartirCarta(jugador);

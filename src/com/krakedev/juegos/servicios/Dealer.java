@@ -4,12 +4,17 @@ import java.util.ArrayList;
 
 import com.krakedev.juegos.entidades.Carta;
 
+//El repartidor (crupier): guarda el mazo y entrega las cartas.
+//Usa Carta (crea las 52 y las guarda en su lista naipe).
+//Lo crea Juego21 en inicializar() y le pide cartas en repartirCarta().
 public class Dealer {
 	// atributos
 	// Mazo del dealer: lista con las 52 cartas
 	private ArrayList<Carta> naipe;
 
-	// Crea la lista vacía y genera las 52 cartas (en ese orden)
+	// Al crear un Dealer, primero crea la lista vacía naipe y luego la llena con
+	// generarNaipe().
+	// Así, "new Dealer()" siempre entrega un mazo completo de 52 cartas.
 	public Dealer() {
 		naipe = new ArrayList<Carta>();
 		generarNaipe();
@@ -26,8 +31,10 @@ public class Dealer {
 		this.naipe = naipe;
 	}
 
-	// Genera las 52 cartas del mazo.
-	// No asigna valorJuego: eso lo hará Juego21
+	// Crea las 52 cartas (4 palos x 13 valores) como objetos Carta y las agrega al
+	// naipe.
+	// No asigna valorJuego: esas son reglas del Blackjack y las pone
+	// Juego21.cargarValores().
 	public void generarNaipe() {
 		// Lista auxiliar con las iniciales de los palos
 		ArrayList<String> palos = new ArrayList<String>();
@@ -66,8 +73,8 @@ public class Dealer {
 		}
 	}
 
-	// Metodo imprimir
-	// recorre el naipe y le pide a cada carta que se imprima
+	// Recorre el naipe y le pide a cada Carta que se imprima (Carta.imprimir()).
+	// Lo usan TestConstructorDealer y TestJuego21 para ver el mazo.
 	public void imprimirNaipe() {
 		for (Carta carta : naipe) {
 			carta.imprimir();
@@ -75,15 +82,19 @@ public class Dealer {
 
 	}
 
-	// Retorna un entero entre 0 y maximo,
-	// ambos incluidos: se multiplica por maximo + 1
+	// Retorna un entero al azar entre 0 y maximo, ambos incluidos (por eso se
+	// multiplica por maximo + 1).
+	// Lo usa entregarCarta para elegir una posición del naipe; TestAleatorio
+	// comprueba su rango.
 	public int generarAleatorio(int maximo) {
 		int aleatorio = (int) (Math.random() * (maximo + 1));
 		return aleatorio;
 	}
 
-	// Saca una carta al azar del naipe:
-	// la toma, la elimina y la retorna
+	// Saca una carta al azar del naipe: elige una posición (generarAleatorio), toma
+	// la carta,
+	// la elimina del naipe (para que no vuelva a salir) y la retorna.
+	// La invoca Juego21.repartirCarta, que luego se la entrega a un Jugador.
 	public Carta entregarCarta() {
 		int posicion = generarAleatorio(naipe.size() - 1);
 		Carta carta = naipe.get(posicion);

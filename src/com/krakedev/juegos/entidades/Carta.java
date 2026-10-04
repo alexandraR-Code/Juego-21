@@ -1,5 +1,9 @@
 package com.krakedev.juegos.entidades;
 
+//Representa UNA carta del naipe (por ejemplo, la K de Diamante).
+//Solo guarda datos: valor, palo y valorJuego.
+//La crea y llena Dealer (generarNaipe), la usa Jugador (la guarda en su mano)
+//y Juego21 le asigna su valorJuego (cargarValores).
 public class Carta {
 	// Atributos
 	private String valor; // "A", "2"… "10", "J", "Q", "K";
@@ -32,7 +36,9 @@ public class Carta {
 		this.palo = palo;
 	}
 
-	// Muestra valor, palo y valor de juego en una sola línea
+	// Muestra los 3 datos de la carta en una línea. Lo invocan Dealer.imprimirNaipe
+	// y Jugador.imprimir, que recorren listas de cartas y le piden a cada una que
+	// se imprima.
 	public void imprimir() {
 		System.out.println(getValor() + " - " + getPalo() + " , " + " Valor juego: " + getValorJuego());
 	}
