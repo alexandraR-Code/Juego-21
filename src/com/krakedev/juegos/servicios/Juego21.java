@@ -118,4 +118,25 @@ public class Juego21 {
 		}
 		return ganadores; // Devuelve la lista, después del for
 	}
+	// Juega una partida de máximo 3 rondas: reparte (repartirRonda), revisa si
+	// alguien
+	// llegó a 21 (validarGanador) y termina antes con break si ya hay ganadores.
+	// Devuelve la lista de ganadores; queda vacía si nadie llegó a 21 en las 3
+	// rondas.
+	// Necesita que antes se haya llamado a inicializar().
+
+	public ArrayList<Jugador> jugar() {
+		ArrayList<Jugador> ganadores = new ArrayList<>(); // Crea la lista de ganadores, antes del for para que viva
+															// hasta el return
+		for (int i = 0; i < 3; i++) { // Máximo 3 rondas
+			repartirRonda(); // Reparte una carta a cada jugador y calcula los totales
+			ganadores = validarGanador(); // Guarda quiénes tienen 21
+			if (ganadores.size() > 0) { // Si hay uno o más ganadores, termina el juego
+				break;
+			}
+
+		}
+		return ganadores; // Devuelve la lista, después del for
+
+	}
 }
