@@ -104,4 +104,18 @@ public class Juego21 {
 
 		}
 	}
+
+	// Revisa a cada jugador y devuelve una lista nueva con los que tienen
+	// exactamente 21 puntos
+	// (Jugador.getPuntajeCartas). Si nadie llegó a 21, devuelve la lista vacía.
+	// Lo invocará jugar() después de cada ronda.
+	public ArrayList<Jugador> validarGanador() {
+		ArrayList<Jugador> ganadores = new ArrayList<>(); // Crea la lista vacía de ganadores
+		for (Jugador jugador : jugadores) { // Revisa a cada jugador de la mesa
+			if (jugador.getPuntajeCartas() == 21) { // Pregunta si sacó 21
+				ganadores.add(jugador); // Si sí, lo agrega a ganadores
+			}
+		}
+		return ganadores; // Devuelve la lista, después del for
+	}
 }
