@@ -28,14 +28,25 @@ public class TestJuego21 {
 		jugador3.setNickname("David");
 		juego21.agregarJugador(jugador3);
 
-		juego21.inicializar();
-
-		// Primera prueba: jugar() reparte hasta 3 rondas y devuelve los ganadores
-		// (lista vacía si nadie llegó a 21). Cada ganador se muestra con
-		// Jugador.imprimir().
-		ArrayList<Jugador> ganadores = juego21.jugar();
-		for (Jugador jugador : ganadores) {
-			jugador.imprimir();
+		// Prueba final: juega hasta 10 partidas y se detiene cuando una tiene
+		// ganadores.
+		// Cada partida reinicia a los jugadores, prepara un naipe nuevo
+		// (Juego21.inicializar),
+		// juega (Juego21.jugar) y muestra a los ganadores (Jugador.imprimir).
+		for (int i = 0; i < 10; i++) { // Hasta 10 partidas
+			for (Jugador jugador : juego21.getJugadores()) { // Para cada jugador de la mesa
+				jugador.setPuntajeCartas(0); // Puntaje en 0
+				jugador.setCartas(new ArrayList<>()); // Sin cartas (lista nueva vacía)
+			}
+			juego21.inicializar(); // Naipe nuevo de 52 cartas
+			ArrayList<Jugador> ganadores = juego21.jugar(); // Juega hasta 3 rondas y guarda los ganadores
+			for (Jugador jugador : ganadores) { // Para cada ganador
+				System.out.println("GANADOR: " + jugador.getNickname()); // Etiqueta para distinguir al ganador
+				jugador.imprimir(); // Muestra su nombre y sus cartas
+			}
+			if (ganadores.size() > 0) { // Si hay uno o más ganadores, termina el juego
+				break;
+			}
 		}
 
 		// Verificación 1: cada jugador muestra sus cartas (una por ronda jugada:
