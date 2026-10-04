@@ -9,8 +9,16 @@ public class Jugador {
 	private String nickname; // Apodo con el que se identifica el jugador
 	private ArrayList<Carta> cartas = new ArrayList<>(); // Cartas recibidas; se inicializa aquí para evitar
 															// NullPointerException
+	private int puntajeCartas; // Total de puntos de sus cartas; lo actualiza Juego21.calcularTotal()
 
 	// Metodos getter y setter
+	public int getPuntajeCartas() {
+		return puntajeCartas;
+	}
+
+	public void setPuntajeCartas(int puntajeCartas) {
+		this.puntajeCartas = puntajeCartas;
+	}
 
 	public String getNickname() {
 		return nickname;

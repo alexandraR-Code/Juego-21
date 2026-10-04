@@ -81,11 +81,27 @@ public class Juego21 {
 
 	// Reparte una ronda: recorre la lista jugadores y llama a repartirCarta por
 	// cada uno,
-	// de modo que todos reciben una carta.
+	// asi todos reciben una carta. Al final invoca calcularTotal() para
+	// actualizar los puntos.
 	public void repartirRonda() {
 		for (Jugador jugador : jugadores) {
 			repartirCarta(jugador);
 		}
+		calcularTotal();
+
 	}
 
+	// Calcula los puntos de cada jugador: suma el valorJuego de todas sus cartas
+	// (Carta.getValorJuego) y guarda el total en Jugador.puntajeCartas.
+	// Lo invoca repartirRonda al terminar de repartir.
+	public void calcularTotal() {
+		for (Jugador jugador : jugadores) {
+			int total = 0;
+			for (Carta carta : jugador.getCartas()) {
+				total += carta.getValorJuego();
+			}
+			jugador.setPuntajeCartas(total);
+
+		}
+	}
 }
